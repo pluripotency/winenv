@@ -10,7 +10,6 @@ if isdirectory(s:neobundledir)
   endif
   call neobundle#begin(s:neobundledir)
   NeoBundleFetch 'Shougo/neobundle.vim'
-
   NeoBundle 'Shougo/neobundle.vim'
 
   NeoBundle 'Shougo/unite.vim'
@@ -35,10 +34,15 @@ if isdirectory(s:neobundledir)
   au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
   au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
+  " vimfiler
+  NeoBundle 'Shougo/vimfiler'
+  nnoremap <silent> ,v :<C-u>VimFiler -split-simple -winwidth=35<CR>
+
   " other plugins...
   " NERDTree
   NeoBundle 'scrooloose/nerdtree'
   nmap <Leader>^ :NERDTreeToggle<CR>
+  nnoremap <silent> ,n :NERDTreeToggle<CR>
 
   " Color Scheme
   NeoBundle 'altercation/vim-colors-solarized'
