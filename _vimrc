@@ -12,15 +12,46 @@ if isdirectory(s:neobundledir)
   NeoBundleFetch 'Shougo/neobundle.vim'
 
   NeoBundle 'Shougo/neobundle.vim'
+
   NeoBundle 'Shougo/unite.vim'
+  nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
+  " ファイル一覧
+  nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+  " レジスタ一覧
+  nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
+  " 最近使用したファイル一覧
+  nnoremap <silent> ,um :<C-u>Unite file_mru<CR>
+  " 常用セット
+  nnoremap <silent> ,uu :<C-u>Unite buffer file_mru<CR>
+  " 全部乗せ
+  nnoremap <silent> ,ua :<C-u>UniteWithBufferDir -buffer-name=files buffer file_mru bookmark file<CR>
+  " ウィンドウを分割して開く
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
+  " ウィンドウを縦に分割して開く
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
+  " ESCキーを2回押すと終了する
+  au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+  au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
+
   " other plugins...
+  " NERDTree
+  NeoBundle 'scrooloose/nerdtree'
+  nmap <Leader>^ :NERDTreeToggle<CR>
+
   " Color Scheme
   NeoBundle 'altercation/vim-colors-solarized'
   NeoBundle '29decibel/codeschool-vim-theme'
+  NeoBundle 'sjl/badwolf'
+
   " lightline
   NeoBundle 'itchyny/lightline.vim'
+  set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
+  set laststatus=2
 
   call neobundle#end()
+
 
 else
   command! NeoBundleInit call s:neobundle_init()
@@ -87,12 +118,11 @@ vnoremap ( "zdi(<C-R>z)<ESC>
 vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
-set statusline=%m%r%h%w\ %{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}[%Y]%t\ %{fugitive#statusline()}\ %1l/%L,%c\ %P
-set laststatus=2
-
 "colorscheme blue
-colorscheme solarized
+"colorscheme solarized
 "colorscheme codeschool
-"colorscheme badwolf
+colorscheme badwolf
 "set background=dark
+
+:cd c:\users\kokuryo-m\
 
