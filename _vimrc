@@ -52,6 +52,10 @@ vnoremap " "zdi"<C-R>z"<ESC>
 vnoremap ' "zdi'<C-R>z'<ESC>
 
 colorscheme blue
+set noundofile
+set nobackup
+set viminfo=
+set noswapfile
 
 :cd ~
 
