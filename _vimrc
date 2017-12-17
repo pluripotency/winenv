@@ -11,7 +11,6 @@ endif
 nnoremap <Space>. :<C-u>edit $HOME/_vimrc<Enter>
 nnoremap <Space>s. :<C-u>source $HOME/_vimrc<Enter>
 
-set imdisable
 set number
 set noswapfile
 set backspace=indent,start,eol
